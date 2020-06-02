@@ -1,0 +1,72 @@
+#include<iostream>
+
+using namespace std;
+
+int main()
+{
+	int t;
+	cin >> t;
+	cin.ignore();
+	while (t--)
+	{
+		int m, n;
+		cin >> m;
+		cin >> n;
+		
+		int a[10][10];
+		for (int i = 0; i < m; i++)
+		{
+			for (int j = 0; j < n; j++)
+			{
+				cin >> a[i][j];
+			}
+		}
+		int dir = 0;
+		int t = 0;
+		int b = (m - 1);
+		int l = 0;
+		int r = (n - 1);
+		while (l <= r && t <= b)
+		{
+			if (dir == 0)
+			{
+				for (int k = l; k <= r; k++)
+				{
+					cout << a[t][k]<<" ";
+				}
+				t++;
+			}
+			else if (dir == 1)
+			{
+				for (int k = t; k <= b; k++)
+				{
+					cout << a[k][r]<<" ";
+				}
+				r--;
+
+			}
+			else if (dir == 2)
+			{
+				for (int k = r; k >= l; k--)
+				{
+					cout << a[b][k]<<" ";
+				}
+				b--;
+
+			}
+			else if (dir == 3)
+			{
+				for (int k = b; k >= t; k--)
+				{
+					cout << a[k][l]<<" ";
+				}
+				l++;
+			}	
+			dir = (dir + 1) % 4;
+		}
+		cout<<endl;
+	}
+
+}
+
+
